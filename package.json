@@ -1,0 +1,23 @@
+{
+  "name": "korean-terminal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test1": "node --import tsx/esm 01-no-cursor.tsx",
+    "test2": "node --import tsx/esm 02-with-cursor.tsx",
+    "test3": "node --import tsx/esm 03-custom-textinput.tsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@types/react": "^19.2.14",
+    "ink": "^6.7.0",
+    "react": "^19.2.4",
+    "string-width": "^8.1.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
