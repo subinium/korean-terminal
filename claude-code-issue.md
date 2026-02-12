@@ -71,10 +71,11 @@ setCursorPosition({
 2. Use `string-width` for CJK-aware cursor column calculation
 3. Show the real terminal cursor alongside the existing visual cursor
 
-### Upstream PRs (in progress)
+### Upstream PRs
 
-- [`ink-text-input`](https://github.com/vadimdemedes/ink-text-input): PR to integrate `useCursor`
-- [`@inkjs/ui`](https://github.com/vadimdemedes/ink-ui): PR for same fix
+- [`ink-text-input` #92](https://github.com/vadimdemedes/ink-text-input/pull/92): Add IME cursor positioning via `useCursor`
+- [`@inkjs/ui` #23](https://github.com/vadimdemedes/ink-ui/pull/23): Add IME cursor positioning to TextInput
+- [`ink` #875](https://github.com/vadimdemedes/ink/pull/875): Improve cursor-ime example with full TextInput
 - [`ink` #866](https://github.com/vadimdemedes/ink/pull/866): `useCursor` hook (merged)
 - [`ink` #872](https://github.com/vadimdemedes/ink/pull/872): `<Cursor>` component (open)
 
