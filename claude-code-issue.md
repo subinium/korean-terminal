@@ -73,8 +73,8 @@ setCursorPosition({
 
 ### Upstream PRs
 
-- [`ink-text-input` #92](https://github.com/vadimdemedes/ink-text-input/pull/92): Add IME cursor positioning via `useCursor`
-- [`@inkjs/ui` #23](https://github.com/vadimdemedes/ink-ui/pull/23): Add IME cursor positioning to TextInput
+- [`ink-text-input` #93](https://github.com/vadimdemedes/ink-text-input/pull/93): Add IME cursor positioning via `useCursor`
+- [`@inkjs/ui` #24](https://github.com/vadimdemedes/ink-ui/pull/24): Add IME cursor positioning to TextInput
 - [`ink` #875](https://github.com/vadimdemedes/ink/pull/875): Improve cursor-ime example with full TextInput
 - [`ink` #866](https://github.com/vadimdemedes/ink/pull/866): `useCursor` hook (merged)
 - [`ink` #872](https://github.com/vadimdemedes/ink/pull/872): `<Cursor>` component (open)
