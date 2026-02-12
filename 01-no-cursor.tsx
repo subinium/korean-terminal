@@ -1,8 +1,8 @@
 /**
- * Test 1: WITHOUT useCursor (기존 ink-text-input 방식)
- * - 가짜 커서 (chalk.inverse)
- * - 실제 터미널 커서 숨김
- * - 한글 IME 조합이 깨지는 케이스
+ * Test 1: WITHOUT useCursor (current ink-text-input approach)
+ * - Fake cursor via chalk.inverse()
+ * - Real terminal cursor is hidden
+ * - IME composition window appears at wrong position (broken)
  */
 import React, { useState } from 'react';
 import { render, Box, Text, useInput } from 'ink';
@@ -41,7 +41,7 @@ function App() {
     }
   });
 
-  // Fake cursor rendering (ink-text-input 방식)
+  // Fake cursor rendering (same approach as ink-text-input)
   let rendered = '';
   let i = 0;
   for (const char of text) {
@@ -54,8 +54,8 @@ function App() {
 
   return (
     <Box flexDirection="column" padding={1}>
-      <Text bold color="red">Test 1: WITHOUT useCursor (가짜 커서)</Text>
-      <Text dimColor>한글을 입력해보세요. IME 후보창 위치와 조합 상태를 확인하세요.</Text>
+      <Text bold color="red">Test 1: WITHOUT useCursor (fake cursor)</Text>
+      <Text dimColor>Try typing Korean/CJK. The IME window will appear at the wrong position.</Text>
       <Text dimColor>Ctrl+C to exit</Text>
       <Text> </Text>
       <Text>&gt; {rendered}</Text>

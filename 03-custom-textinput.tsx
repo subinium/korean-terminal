@@ -1,9 +1,9 @@
 /**
  * Test 3: Custom TextInput with useCursor
- * - ink-text-input을 대체하는 커스텀 컴포넌트
- * - useCursor로 실제 커서 위치 동기화
- * - string-width로 CJK 폭 계산
- * - 커서 이동, 중간 삽입, 삭제 모두 지원
+ * - Full replacement for ink-text-input with IME support
+ * - Syncs real terminal cursor position via useCursor
+ * - Uses string-width for CJK column width calculation
+ * - Supports cursor movement, middle insertion, and deletion
  */
 import React, { useState, useCallback } from 'react';
 import { render, Box, Text, useInput, useCursor } from 'ink';
@@ -78,9 +78,9 @@ function App() {
 
   return (
     <Box flexDirection="column">
-      <Text bold color="cyan">Test 3: Custom TextInput (커서 이동 + 중간 삽입 지원)</Text>
-      <Text dimColor>한글 입력, 화살표 이동, 중간 삽입/삭제를 테스트하세요.</Text>
-      <Text dimColor>Enter로 제출, Ctrl+C로 종료</Text>
+      <Text bold color="cyan">Test 3: Custom TextInput (cursor movement + middle insertion)</Text>
+      <Text dimColor>Try Korean input, arrow keys, middle insertion/deletion.</Text>
+      <Text dimColor>Enter to submit, Ctrl+C to exit</Text>
       <Text> </Text>
       {submitted.map((line, i) => (
         <Text key={i} dimColor>  {line}</Text>
