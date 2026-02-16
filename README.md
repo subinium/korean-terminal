@@ -67,8 +67,8 @@ Using `.length` for cursor positioning causes the cursor to drift left after eve
 
 These PRs integrate `useCursor` into the Ink ecosystem to fix this issue:
 
-- [`ink-text-input#92`](https://github.com/vadimdemedes/ink-text-input/pull/92) — Add IME cursor support via `useCursor`
-- [`ink#875`](https://github.com/vadimdemedes/ink/pull/875) — Improve cursor-ime example with full TextInput
+- [`ink-text-input#93`](https://github.com/vadimdemedes/ink-text-input/pull/93) — Add IME cursor positioning via `cursorStart` prop
+- [`ink#876`](https://github.com/vadimdemedes/ink/pull/876) — Enhance cursor-ime example with cursor movement and editing
 - [`@inkjs/ui#23`](https://github.com/vadimdemedes/ink-ui/pull/23) — Add IME cursor support to TextInput
 - [`claude-code#25186`](https://github.com/anthropics/claude-code/issues/25186) — Issue report for Claude Code
 

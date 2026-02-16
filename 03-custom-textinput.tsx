@@ -1,6 +1,7 @@
 /**
  * Test 3: Custom TextInput with useCursor
- * - Full replacement for ink-text-input with IME support
+ * - Mirrors the cursor-ime example from ink PR #876
+ * - Uses splitAt/charCount for codepoint-aware text manipulation
  * - Syncs real terminal cursor position via useCursor
  * - Uses string-width for CJK column width calculation
  * - Supports cursor movement, middle insertion, and deletion
@@ -8,6 +9,15 @@
 import React, { useState, useCallback } from 'react';
 import { render, Box, Text, useInput, useCursor } from 'ink';
 import stringWidth from 'string-width';
+
+function splitAt(string_: string, index: number): [string, string] {
+  const chars = [...string_];
+  return [chars.slice(0, index).join(''), chars.slice(index).join('')];
+}
+
+function charCount(string_: string): number {
+  return [...string_].length;
+}
 
 interface TextInputProps {
   value: string;
@@ -18,7 +28,7 @@ interface TextInputProps {
 }
 
 function TextInput({ value, onChange, onSubmit, prompt = '> ', row = 0 }: TextInputProps) {
-  const [cursorOffset, setCursorOffset] = useState(value.length);
+  const [cursorIndex, setCursorIndex] = useState(0);
   const { setCursorPosition } = useCursor();
 
   useInput((input, key) => {
@@ -28,33 +38,38 @@ function TextInput({ value, onChange, onSubmit, prompt = '> ', row = 0 }: TextIn
     }
 
     if (key.backspace || key.delete) {
-      if (cursorOffset > 0) {
-        const next = value.slice(0, cursorOffset - 1) + value.slice(cursorOffset);
-        onChange(next);
-        setCursorOffset((prev) => prev - 1);
+      if (cursorIndex > 0) {
+        const [before, after] = splitAt(value, cursorIndex);
+        const [kept] = splitAt(before, charCount(before) - 1);
+        onChange(kept + after);
+        setCursorIndex(previous => previous - 1);
       }
       return;
     }
 
     if (key.leftArrow) {
-      setCursorOffset((prev) => Math.max(0, prev - 1));
+      setCursorIndex(previous => Math.max(0, previous - 1));
       return;
     }
 
     if (key.rightArrow) {
-      setCursorOffset((prev) => Math.min(value.length, prev + 1));
+      setCursorIndex(previous => Math.min(charCount(value), previous + 1));
+      return;
+    }
+
+    if (key.upArrow || key.downArrow) {
       return;
     }
 
     if (!key.ctrl && !key.meta && input) {
-      const next = value.slice(0, cursorOffset) + input + value.slice(cursorOffset);
-      onChange(next);
-      setCursorOffset((prev) => prev + input.length);
+      const [before, after] = splitAt(value, cursorIndex);
+      onChange(before + input + after);
+      setCursorIndex(previous => previous + charCount(input));
     }
   });
 
-  const textBeforeCursor = value.slice(0, cursorOffset);
-  setCursorPosition({ x: stringWidth(prompt + textBeforeCursor), y: row });
+  const beforeCursor = splitAt(value, cursorIndex)[0];
+  setCursorPosition({ x: stringWidth(prompt + beforeCursor), y: row });
 
   return (
     <Text>{prompt}{value}</Text>
