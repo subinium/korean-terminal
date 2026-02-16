@@ -69,7 +69,7 @@ These PRs integrate `useCursor` into the Ink ecosystem to fix this issue:
 
 - [`ink-text-input#93`](https://github.com/vadimdemedes/ink-text-input/pull/93) — Add IME cursor positioning via `cursorStart` prop
 - [`ink#876`](https://github.com/vadimdemedes/ink/pull/876) — Enhance cursor-ime example with cursor movement and editing
-- [`@inkjs/ui#23`](https://github.com/vadimdemedes/ink-ui/pull/23) — Add IME cursor support to TextInput
+- [`@inkjs/ui#24`](https://github.com/vadimdemedes/ink-ui/pull/24) — Add IME cursor positioning support to TextInput
 - [`claude-code#25186`](https://github.com/anthropics/claude-code/issues/25186) — Issue report for Claude Code
 
 ## How Hangul Composition Works
